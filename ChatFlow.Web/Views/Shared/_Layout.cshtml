@@ -9,7 +9,32 @@
 
      @Styles.Render("~/assets/vendors")
 
+     <style>
+       .sidebar-brand-wrapper > .sidebar-brand-name > span{
+               transition : .2s;
+               transition-property : transform;
+          }
 
+            .sidebar-brand-wrapper > .sidebar-brand-name:hover{
+               text-decoration : none;
+          }  
+
+          .sidebar-brand-wrapper > .sidebar-brand-name > span:hover{
+               transition : .2s;
+               transition-property : transform;
+               transform : translateY(-7px);
+          }   
+          
+          .sidebar-icon-only .sidebar-brand-name > span:not(:is(:last-child, :first-child)){
+               font-size : 0;
+s               width : 0;
+               height : 0;
+          }
+
+          .login--form {
+               background : red;
+          }
+     </style>
 </head>
      <body>
           <div class="container-scroller">
