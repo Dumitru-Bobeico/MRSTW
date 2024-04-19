@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChatFlow.BusinessLogic
-{
-    public class Class1
-    {
-    }
+namespace ChatFlow.BusinessLogic.Interfaces {
+     internal class ISession {
+     }
 }
