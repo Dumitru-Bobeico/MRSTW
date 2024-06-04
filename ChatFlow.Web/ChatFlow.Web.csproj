@@ -1102,18 +1102,15 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Chat.cs" />
-    <Compile Include="Models\Chats.cs" />
-    <Compile Include="Models\Message.cs" />
-    <Compile Include="Models\Messages.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -1148,9 +1145,10 @@
     <Content Include="Scripts\bootstrap.esm.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Shared\_Layout_Blank.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1160,11 +1158,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChatFlow.BusinessLogic\ChatFlow.BusinessLogic.csproj">
       <Project>{732fd27d-e388-43c5-bf62-81e0c613ebac}</Project>
       <Name>ChatFlow.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChatFlow.Domains\ChatFlow.Domains.csproj">
+      <Project>{D7B04BED-1AC1-4B00-ACE0-62D5DEB36254}</Project>
+      <Name>ChatFlow.Domains</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

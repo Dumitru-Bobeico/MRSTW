@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace ChatFlow.Web.Controllers
 {
-    public class ProfilesController : Controller
+    public class BaseController : Controller
     {
-        // GET: Profiles
+        // GET: Base
         public ActionResult Index()
         {
             return View();
