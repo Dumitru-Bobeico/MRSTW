@@ -1,7 +1,9 @@
 ﻿namespace ChatFlow.Domains
 {
-    public class Class1
+    public enum RolesTypes
     {
-
+        Guest = 0,
+        Admin = 1,
+		User = 2
     }
 }

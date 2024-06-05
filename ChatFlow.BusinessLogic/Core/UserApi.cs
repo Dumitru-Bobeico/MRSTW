@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ChatFlow.BusinessLogic.Core {
-     internal class UserApi {
+     public class UserApi {
      }
 }

@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ChatFlow.BusinessLogic.Interfaces {
-     internal class ISession {
+     public class ISession {
      }
 }

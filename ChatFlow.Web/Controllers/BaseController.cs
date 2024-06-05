@@ -6,12 +6,10 @@ using System.Web.Mvc;
 
 namespace ChatFlow.Web.Controllers
 {
-    public class LoginController : Controller
+    public class BaseController : Controller
     {
-          [HttpPost]
-          [ValidateAntiForgeryToken]
-          // GET: Login
-          public ActionResult Login()
+        // GET: Base
+        public ActionResult Index()
         {
             return View();
         }
