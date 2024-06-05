@@ -1,7 +1,14 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    var user = ViewBag.User;
 }
 
 
 <div>Aici va fi chatul</div>
+@if (user != null) { 
+    <h1>User is not null</h1>
+} else
+{
+    <h1>User is null</h1>
+}

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using ChatFlow.Domains.Enums;
 
 namespace ChatFlow.Domains.Entities
 {
@@ -31,6 +32,8 @@ namespace ChatFlow.Domains.Entities
 		[MaxLength(255)]
 		public string Imageurl { get; set; }
 
-		public DateTime? CreatedOn { get; set; }
+		public DateTime CreatedOn { get; set; }
+
+		public URole Level { get; set; }
 	}
 }

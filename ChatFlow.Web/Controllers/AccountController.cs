@@ -8,9 +8,10 @@ using ChatFlow.Web.ViewModels;
 using ChatFlow.Domains.Entities;
 using ChatFlow.BusinessLogic.Interfaces;
 using ChatFlow.BusinessLogic;
+using System.Web.UI.WebControls;
 namespace ChatFlow.Web.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
 
           private readonly ISession _session;
@@ -33,49 +34,30 @@ namespace ChatFlow.Web.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Register(RegisterViewModel user)
 		{
-			try
-			{
-				if (ModelState.IsValid)
-				{
-					using (UserContext db = new UserContext())
-					{
-						var userAlreadyExists = db.Users.Any(a => a.Email.Equals(user.Email) && a.Password.Equals(user.Password));
+               if (ModelState.IsValid)
+               {
+                    URegisterData uData = new URegisterData
+                    {
+                         Email = user.Email,
+                         Password = user.Password,
+                         Username = user.Username,
+                         CreatedOn = DateTime.Now
+                    };
 
-						if (!userAlreadyExists)
-						{
-								User _user = new User();
-							_user.Email = user.Email;
-							_user.Password = user.Password;
-							_user.Username = user.Username;
-							_user.Imageurl = "";
-							_user.CreatedOn = DateTime.Now;
-							
-							db.Users.Add(_user);
-							db.SaveChanges();
-						}
-						else
-						{
-							// User already exists, handle accordingly (e.g., display an error message)
-							ModelState.AddModelError(string.Empty, "User with this email already exists.");
-							return View(user);
-						}
-					}
-				}
-				else
-				{
-					// Handle invalid model state (e.g., display validation errors)
-					return View(user);
-				}
-			}
-			catch (Exception ex)
-			{
-				// Log the exception or handle it in a way appropriate for your application
-				ModelState.AddModelError(string.Empty, ex.Message);
-				return View(user);
-			}
+                    ULoginResp loginResp = _session.UserRegister(uData);
 
-			return RedirectToAction("Index", "Home"); // Assuming redirect to the home page upon successful registration
-		}
+                    if (loginResp.Status)
+                    {
+                         return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                         ModelState.AddModelError("", loginResp.StatusMsg);
+                         return View();
+                    }
+               }
+               return View();
+          }
 
 
 		[HttpGet]
@@ -139,8 +121,8 @@ namespace ChatFlow.Web.Controllers
 
                     if (loginResp.Status)
                     {
-                         //HttpCookie cookie = _session.GenCookie(login.Email);
-                         //ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                         HttpCookie cookie = _session.GenCookie(login.Email);
+                         ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
                          return RedirectToAction("Index", "Home");
                     }
