@@ -68,7 +68,7 @@ namespace ChatFlow.BusinessLogic.Core {
                          Email = data.Email,
                          Username = data.Username,
                          Password = data.Password,
-                         Imageurl = "",
+                         Imageurl = data.Imageurl,
                          CreatedOn = data.CreatedOn,
                          Level = URole.User,
                          

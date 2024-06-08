@@ -33,22 +33,24 @@ namespace ChatFlow.Web.Controllers
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Register(RegisterViewModel user)
-		{
+		    {
                if (ModelState.IsValid)
                {
+              
                     URegisterData uData = new URegisterData
                     {
                          Email = user.Email,
                          Password = user.Password,
                          Username = user.Username,
-                         CreatedOn = DateTime.Now
-                    };
+                         CreatedOn = DateTime.Now,
+					    Imageurl = user.Imageurl
+					};
 
                     ULoginResp loginResp = _session.UserRegister(uData);
 
                     if (loginResp.Status)
                     {
-                         return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {
@@ -134,5 +136,52 @@ namespace ChatFlow.Web.Controllers
                }
                return View();
           }
-     }
+
+		[HttpGet]
+		public ActionResult Profile()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Profile(ProfileViewModel model)
+		{
+			try
+			{
+				if (ModelState.IsValid)
+				{
+					using (UserContext db = new UserContext())
+					{
+						var userAlreadyExists = db.Users.Where(a => a.Username.Equals(model.Username)).FirstOrDefault();
+
+						if (userAlreadyExists != null)
+						{
+							userAlreadyExists.Username = model.Username;
+							db.SaveChanges();
+							return RedirectToAction("Profile", "Account");
+						}
+						else
+						{
+							// User already exists, handle accordingly (e.g., display an error message)
+							ModelState.AddModelError(string.Empty, "User with this username already exists.");
+							return View(model);
+						}
+					}
+				}
+				else
+				{
+					// Handle invalid model state (e.g., display validation errors)
+					return View(model);
+				}
+			}
+			catch (Exception ex)
+			{
+				// Log the exception or handle it in a way appropriate for your application
+				ModelState.AddModelError(string.Empty, ex.Message);
+				return View(model);
+			}
+
+		}
+	}
 }

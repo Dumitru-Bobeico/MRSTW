@@ -16,6 +16,13 @@ namespace ChatFlow.Web.Controllers
                var bl = new BusinesLogic();
                _session = bl.GetSessionBL();
           }
+
+        [HttpGet]
+        public ActionResult Chat()
+        {
+            return View();
+        }
+
           // GET: Home
           public ActionResult Index()
         {

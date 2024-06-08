@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "_Navbar";
+    var user = ViewBag.User;
 }
 
 <nav class="navbar p-0 fixed-top d-flex flex-row">
@@ -12,10 +13,21 @@
                <span class="mdi mdi-menu"></span>
           </button>
           <ul class="navbar-nav w-100">
-               <li class="nav-item w-100">
-                    <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                         <input type="text" class="form-control" placeholder="Search products">
-                    </form>
+               <li style="position:relative" class="nav-item w-100">
+                   <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                       <input type="text" class="w-100 form-control" placeholder="Search collaborators">
+                   </form>
+
+                       <div style="position:absolute;width:100%;left:0;right:0;" class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list show" aria-labelledby="messageDropdown">
+                           <a style="display:flex;align-items:center;padding:1rem" class="dropdown-item preview-item">
+                               <div class="preview-thumbnail">
+                                   <img src="../../assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
+                               </div>
+                               <div class="preview-item-content">
+                                   <p class="preview-subject ellipsis mb-1">mark_na_saite</p>
+                               </div>
+                           </a>
+                       </div>
                </li>
           </ul>
           <ul class="navbar-nav navbar-nav-right">
@@ -154,16 +166,22 @@
                </li>
                <li class="nav-item dropdown">
                     <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
-                         <div class="navbar-profile">
-                              <img class="img-xs rounded-circle" src="../../assets/images/faces/face15.jpg" alt="">
-                              <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
-                              <i class="mdi mdi-menu-down d-none d-sm-block"></i>
-                         </div>
+                        <div class="navbar-profile">
+                         @if (user != null)
+{
+    <img class="img-xs rounded-circle" src="@user.Imageurl" alt="">
+    <p class="mb-0 d-none d-sm-block navbar-profile-name">
+        @user.Username
+    </p>
+}
+
+                            <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                        </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                          <h6 class="p-3 mb-0">Profile</h6>
                          <div class="dropdown-divider"></div>
-                         <a class="dropdown-item preview-item">
+                         <a href="@Url.Action("Profile", "Account")" class="dropdown-item preview-item">
                               <div class="preview-thumbnail">
                                    <div class="preview-icon bg-dark rounded-circle">
                                         <i class="mdi mdi-settings text-success"></i>
