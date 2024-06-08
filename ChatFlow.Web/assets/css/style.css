@@ -15716,6 +15716,8 @@ body,
 html {
   overflow-x: hidden;
   padding-right: 0 !important;
+  position: relative;
+  z-index : 10;
   background-color: #191c24; }
 
 *:-moz-full-screen,

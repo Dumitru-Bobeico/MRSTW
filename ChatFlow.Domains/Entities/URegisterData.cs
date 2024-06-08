@@ -13,6 +13,7 @@ namespace ChatFlow.Domains.Entities
           public string Email { get; set; }
           public string Password { get; set; }
           public DateTime CreatedOn { get; set; }
+          public string Imageurl { get; set; }
 
      }
 }

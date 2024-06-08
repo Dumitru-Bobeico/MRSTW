@@ -2,9 +2,8 @@
 @{
      ViewBag.Title = "Sidebar";
 }
-
-<!-- partial:../../partials/_sidebar.html -->
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+ 
+<nav style="width:300px;" class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
         <a href="@Url.Action("Index", "Home")" class="sidebar-brand-name font-weight-bold h3 text-white" style="letter-spacing:8px;display:flex">
             <span>C</span>
@@ -18,105 +17,99 @@
         </a>
         <!--    <a class="sidebar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>-->
     </div>
-     <ul class="nav">
-          <li class="nav-item profile">
-               <div class="profile-desc">
-                    <div class="profile-pic">
-                         <div class="count-indicator">
-                              <img class="img-xs rounded-circle " src="../../assets/images/faces/face15.jpg" alt="">
-                              <span class="count bg-success"></span>
-                         </div>
-                         <div class="profile-name">
-                              <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
-                              <span>Gold Member</span>
-                         </div>
+    <ul class="nav">
+        <li class="active">
+            <div class="d-flex bd-highlight">
+                <div style="display:flex;justify-content:center;align-items:center;" class="img_cont">
+                    <img style="width:65%;height:65%;" src="https://www.gravatar.com/avatar/d522537123bae3faaaedb7fcd8e6c565?d=identicon&s=150" class="rounded-circle user_img">
+                </div>
+                <div class="user_info">
+                    <span>Vitaly</span>
+                </div>
+            </div>
+        </li>
+
+        <li class="">
+            <div class="d-flex bd-highlight">
+                <div style="display:flex;justify-content:center;align-items:center;" class="img_cont">
+                    <img style="width:65%;height:65%;" src="https://www.gravatar.com/avatar/d522537123bae3f2aaaedb7fcd8e6c565?d=identicon&s=150" class="rounded-circle user_img">
+                </div>
+                <div class="user_info">
+                    <span>Gregory</span>
+                </div>
+            </div>
+        </li>
+
+        <li class="">
+            <div class="d-flex bd-highlight">
+                <div style="display:flex;justify-content:center;align-items:center;" class="img_cont">
+                    <img style="width:65%;height:65%;" src="https://www.gravatar.com/avatar/d522537123bdsae3faaaedb7fcd8e6c565?d=identicon&s=150" class="rounded-circle user_img">
+                </div>
+                <div class="user_info">
+                    <span>Stepany</span>
+                </div>
+            </div>
+        </li>
+
+        <li class="">
+            <div class="d-flex bd-highlight">
+                <div style="display:flex;justify-content:center;align-items:center;" class="img_cont">
+                    <img style="width:65%;height:65%;" src="https://www.gravatar.com/avatar/d522537d123bdsae3faaaedb7fcd8e6c565?d=identicon&s=150" class="rounded-circle user_img">
+                </div>
+                <div class="user_info">
+                    <span>Customers Group</span>
+                </div>
+            </div>
+        </li>
+        @*    <div style="background: #dee2e6; margin-bottom: 1px; border-radius: 0;color : #000000;">
+            <div style="padding: .5rem;">
+                <div style="display: flex; align-items: flex-start;">
+                    <img src="profile-image.jpg" alt="Profile Image" style="background:red;width: 50px; height: 50px; border-radius: 50%; margin-right: 1rem;">
+                    <div>
+                        <h5 style="margin-top: 0; margin-bottom: 0.5rem;">John Doe</h5>
+                        <p style="margin-bottom: 0;">Last message: Hi there!</p>
                     </div>
-                    <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-                         <a href="#" class="dropdown-item preview-item">
-                              <div class="preview-thumbnail">
-                                   <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-settings text-primary"></i>
-                                   </div>
-                              </div>
-                              <div class="preview-item-content">
-                                   <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
-                              </div>
-                         </a>
-                         <div class="dropdown-divider"></div>
-                         <a href="#" class="dropdown-item preview-item">
-                              <div class="preview-thumbnail">
-                                   <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-onepassword  text-info"></i>
-                                   </div>
-                              </div>
-                              <div class="preview-item-content">
-                                   <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-                              </div>
-                         </a>
-                         <div class="dropdown-divider"></div>
-                         <a href="#" class="dropdown-item preview-item">
-                              <div class="preview-thumbnail">
-                                   <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-calendar-today text-success"></i>
-                                   </div>
-                              </div>
-                              <div class="preview-item-content">
-                                   <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
-                              </div>
-                         </a>
-                    </div>
-               </div>
-          </li>
-          <li class="nav-item nav-category">
-               <span class="nav-link">Navigation</span>
-          </li>
+                </div>
+            </div>
+        </div>*@
 
-          <li class="nav-item menu-items">
-               <a class="nav-link" href="#">
-                    <span class="menu-icon">
-                         <i class="mdi mdi-contacts"></i>
-                    </span>
-                    <span class="menu-title">All DMs</span>
-               </a>
-          </li>
 
-          <li class="nav-item menu-items">
-               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                    <span class="menu-icon">
-                         <i class="mdi mdi-security"></i>
-                    </span>
-                    <span class="menu-title">Groups</span>
-                    <i class="menu-arrow"></i>
-               </a>
-               <div class="collapse" id="auth">
-                   <ul class="nav flex-column sub-menu">
-                       <li class="nav-item"> <a class="nav-link" href="../../pages/samples/blank-page.html"> General </a></li>
-                       <li class="nav-item"> <a class="nav-link" href="@Url.Action("Home", "Home")"> Random </a></li>
-                       <li class="nav-item"> <a class="nav-link" href="@Url.Action("Login", "Account")"> Login </a></li>
-                       <li class="nav-item"> <a class="nav-link" href="@Url.Action("Register", "Account")"> Register </a></li>
-                   </ul>
-               </div>
-          </li>
+        @*  <li class="nav-item menu-items">
+             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                  <span class="menu-icon">
+                       <i class="mdi mdi-security"></i>
+                  </span>
+                  <span class="menu-title">Groups</span>
+                  <i class="menu-arrow"></i>
+             </a>
+             <div class="collapse" id="auth">
+                 <ul class="nav flex-column sub-menu">
+                     <li class="nav-item"> <a class="nav-link" href="../../pages/samples/blank-page.html"> General </a></li>
+                     <li class="nav-item"> <a class="nav-link" href="@Url.Action("Home", "Home")"> Random </a></li>
+                     <li class="nav-item"> <a class="nav-link" href="@Url.Action("Login", "Account")"> Login </a></li>
+                     <li class="nav-item"> <a class="nav-link" href="@Url.Action("Register", "Account")"> Register </a></li>
+                 </ul>
+             </div>
+        </li>
 
-          <li class="nav-item menu-items">
-               <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                    <span class="menu-icon">
-                         <i class="mdi mdi-security"></i>
-                    </span>
-                    <span class="menu-title">Direct Messages</span>
-                    <i class="menu-arrow"></i>
-               </a>
-               <div class="collapse" id="auth">
-                    <ul class="nav flex-column sub-menu">
-                         <li class="nav-item"> <a class="nav-link" href="#"> General </a></li>
-                         <li class="nav-item"> <a class="nav-link" href="#"> Random </a></li>
-                         <li class="nav-item"> <a class="nav-link" href="#"> Add Channel </a></li>
-                         <li class="nav-item"> <a class="nav-link" href="#"> Login </a></li>
-                         <li class="nav-item"> <a class="nav-link" href="#"> Register </a></li>
-                    </ul>
-               </div>
-          </li>
+        <li class="nav-item menu-items">
+             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                  <span class="menu-icon">
+                       <i class="mdi mdi-security"></i>
+                  </span>
+                  <span class="menu-title">Direct Messages</span>
+                  <i class="menu-arrow"></i>
+             </a>
+             <div class="collapse" id="auth">
+                  <ul class="nav flex-column sub-menu">
+                       <li class="nav-item"> <a class="nav-link" href="#"> General </a></li>
+                       <li class="nav-item"> <a class="nav-link" href="#"> Random </a></li>
+                       <li class="nav-item"> <a class="nav-link" href="#"> Add Channel </a></li>
+                       <li class="nav-item"> <a class="nav-link" href="#"> Login </a></li>
+                       <li class="nav-item"> <a class="nav-link" href="#"> Register </a></li>
+                  </ul>
+             </div>
+        </li>*@
 
-     </ul>
+    </ul>
 </nav>

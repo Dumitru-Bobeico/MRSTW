@@ -4,10 +4,7 @@
 }
 
 @using System.Web.Optimization;
-
-
 @model ChatFlow.Web.ViewModels.RegisterViewModel
-
 
 <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
@@ -24,34 +21,36 @@
 
 
                             <form>
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                                    <div class="col-md-10">
-                                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-                                    </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                                <div class="col-md-10">
+                                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                    <div class="col-md-10">
-                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                                    </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                <div class="col-md-10">
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                 </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                    <div class="col-md-10">
-                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
+                            </div>
+                         
 
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary btn-block enter-btn">Register</button>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                <div class="col-md-10">
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                                 </div>
+                            </div>
 
-                                <p class="sign-up text-center">Already have an Account?<a href="@Url.Action("Login", "Account")"> Sign In</a></p>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-block enter-btn">Register</button>
+                            </div>
+
+                            <p class="sign-up text-center">Already have an Account?<a href="@Url.Action("Login", "Account")"> Sign In</a></p>
                             </form>
                         }
                     </div>
@@ -60,4 +59,36 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spark-md5/3.0.0/spark-md5.min.js"></script>
+
+    <script>function generateAvatar(email) {
+
+            var hash = SparkMD5.hash(email.trim()); // Generate hash value
+           return 'https://www.gravatar.com/avatar/' + hash + '?d=identicon&s=150'; // Generate Gravatar URL
+ 
+}
+        document.querySelector("#RegisterForm").addEventListener("submit", function (e) {
+            // Prevent the default form submission
+            e.preventDefault();
+
+            // Get the email value
+            var email = document.getElementById('Email').value.trim();
+            // Generate hash for the email
+            var hashedEmail = SparkMD5.hash(email);
+
+
+            const formData = new FormData(e.target);
+            formData.append("Imageurl", generateAvatar(hashedEmail));
+
+            fetch(e.target.action, {
+                method: e.target.method,
+                body: formData
+            })
+
+            window.location.replace("http://localhost:62700/Account/Login");
+        });
+
+    </script>
+
 
