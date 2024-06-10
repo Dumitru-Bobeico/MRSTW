@@ -22,7 +22,7 @@ namespace ChatFlow.Web.Controllers
           public void SessionStatus()
           {
 
-               var apiCookie = Request.Cookies["X-KEY"];
+                var apiCookie = System.Web.HttpContext.Current.Request.Cookies["X-KEY"];
                if (apiCookie != null)
                {
                     var profile = _session.GetUserByCookie(apiCookie.Value);

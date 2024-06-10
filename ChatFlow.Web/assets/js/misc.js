@@ -10,7 +10,8 @@
     //Add active class to nav-link based on url dynamically
     //Active class can be hard coded directly in html file also as required
 
-    function addActiveClass(element) {
+      function addActiveClass(element) {
+          console.log("TEST", element)
       if (current === "") {
         //for root url
         if (element.attr('href').indexOf("index.html") !== -1) {

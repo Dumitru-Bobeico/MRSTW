@@ -11,5 +11,7 @@ namespace ChatFlow.Domains.Entities
 		public string title { get; set; } = string.Empty;
 		public string description { get; set; }
 		public DateTime created_at { get; set; }
+
+		public int userId { get; set; }
 	}
 }

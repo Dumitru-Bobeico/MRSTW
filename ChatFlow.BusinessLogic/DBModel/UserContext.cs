@@ -9,8 +9,8 @@ namespace ChatFlow.BusinessLogic.DBModel
 		{
 		}
 		public DbSet<User> Users { get; set; }
-/*		public DbSet<Message> Messages { get; set; }
 		public DbSet<Group> Groups { get; set; }
+/*		public DbSet<Message> Messages { get; set; }
 		public DbSet<GroupMembers> Chats { get; set; }
 		public DbSet<Friends> Chat { get; set; }
 		public DbSet<ChatRoom> ChatRoom { get; set; }

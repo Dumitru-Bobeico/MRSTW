@@ -19,13 +19,35 @@ namespace ChatFlow.Web.Controllers
           {
                var bl = new BusinesLogic();
                _session = bl.GetSessionBL();
-          }
+		}
+
+		public void GetUser()
+		{
+			SessionStatus();
+			var apiCookie = System.Web.HttpContext.Current.Request.Cookies["X-KEY"];
+
+			string userStatus = (string)System.Web.HttpContext.Current.Session["LoginStatus"];
+			if (userStatus != "logout")
+			{
+				var profile = _session.GetUserByCookie(apiCookie.Value);
+				ViewBag.User = profile;
+			}
+			else if (userStatus == "logout")
+			{
+				ViewBag.User = null;
+			}
+		}
 
 
 		// GET: Account
 		[HttpGet]
 		public ActionResult Register()
 		{
+            GetUser();
+			if (ViewBag.User != null)
+			{
+				return RedirectToAction("Index", "Home");
+			}
 			return View();
 		}
 
@@ -65,6 +87,11 @@ namespace ChatFlow.Web.Controllers
 		[HttpGet]
 		public ActionResult Login()
 		{
+			GetUser();
+			if (ViewBag.User != null)
+			{
+				return RedirectToAction("Index", "Home");
+			}
 			return View();
 		}
 

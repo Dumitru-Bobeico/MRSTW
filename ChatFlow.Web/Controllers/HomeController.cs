@@ -18,7 +18,7 @@ namespace ChatFlow.Web.Controllers
           }
 
         [HttpGet]
-        public ActionResult Chat()
+        public ActionResult Home()
         {
             return View();
         }
@@ -27,6 +27,10 @@ namespace ChatFlow.Web.Controllers
           public ActionResult Index()
         {
                GetUser();
+            if(ViewBag.User == null)
+            {
+				return RedirectToAction("Login", "Account");
+			}
             return View();
 
         }

@@ -111,7 +111,7 @@ namespace ChatFlow.BusinessLogic.Core {
                     if (curent != null)
                     {
                          curent.CookieString = apiCookie.Value;
-                         curent.ExpireTime = DateTime.Now.AddMinutes(1);
+                         curent.ExpireTime = DateTime.Now.AddMinutes(160);
                          using (var todo = new SessionContext())
                          {
                               todo.Entry(curent).State = EntityState.Modified;
@@ -124,7 +124,7 @@ namespace ChatFlow.BusinessLogic.Core {
                          {
                               Username = loginEmail,
                               CookieString = apiCookie.Value,
-                              ExpireTime = DateTime.Now.AddMinutes(60)
+                              ExpireTime = DateTime.Now.AddMinutes(160)
                          });
                          db.SaveChanges();
                          List<Session> sessiolist = new List<Session>();

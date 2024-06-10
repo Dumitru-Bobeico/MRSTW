@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinesLogic.cs" />
+    <Compile Include="Core\ChatApi.cs" />
     <Compile Include="Core\UserApi.cs" />
     <Compile Include="DataContextMigrations\202406052040374_Initial.cs" />
     <Compile Include="DataContextMigrations\202406052040374_Initial.Designer.cs">

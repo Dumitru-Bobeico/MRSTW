@@ -18,9 +18,6 @@
                         @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @id = "RegisterForm" }))
                         {
                             @Html.AntiForgeryToken()
-
-
-                            <form>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label" })
                                 @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
@@ -36,7 +33,6 @@
                                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                         
 
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
@@ -46,12 +42,13 @@
                                 </div>
                             </div>
 
+                            <input type="hidden" id="Imageurl" name="Imageurl" />
+
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary btn-block enter-btn">Register</button>
                             </div>
 
                             <p class="sign-up text-center">Already have an Account?<a href="@Url.Action("Login", "Account")"> Sign In</a></p>
-                            </form>
                         }
                     </div>
                 </div>
@@ -62,33 +59,22 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/spark-md5/3.0.0/spark-md5.min.js"></script>
 
-    <script>function generateAvatar(email) {
+<script>
+    function generateAvatar(email) {
+        var hash = SparkMD5.hash(email.trim()); // Generate hash value
+        return 'https://www.gravatar.com/avatar/' + hash + '?d=identicon&s=150'; // Generate Gravatar URL
+    }
 
-            var hash = SparkMD5.hash(email.trim()); // Generate hash value
-           return 'https://www.gravatar.com/avatar/' + hash + '?d=identicon&s=150'; // Generate Gravatar URL
- 
-}
-        document.querySelector("#RegisterForm").addEventListener("submit", function (e) {
-            // Prevent the default form submission
-            e.preventDefault();
+    document.querySelector("#RegisterForm").addEventListener("submit", function (e) {
+        // Get the email value
+        var email = document.getElementById('Email').value.trim();
 
-            // Get the email value
-            var email = document.getElementById('Email').value.trim();
-            // Generate hash for the email
-            var hashedEmail = SparkMD5.hash(email);
+        // Generate avatar URL
+        var avatarUrl = generateAvatar(email);
 
+        // Set the value of the hidden input field
+        document.getElementById('Imageurl').value = avatarUrl;
 
-            const formData = new FormData(e.target);
-            formData.append("Imageurl", generateAvatar(hashedEmail));
-
-            fetch(e.target.action, {
-                method: e.target.method,
-                body: formData
-            })
-
-            window.location.replace("http://localhost:62700/Account/Login");
-        });
-
-    </script>
-
-
+        // Allow the form to submit
+    });
+</script>
